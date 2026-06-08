@@ -1,0 +1,184 @@
+.container {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 2/3;
+}
+
+.container svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Base path styles */
+.container path {
+  fill: #e54848;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Central face/detail paths */
+.central {
+  stroke: #ff6b6b;
+  stroke-width: 0.4;
+  stroke-dasharray: 800 400;
+  stroke-dashoffset: 0;
+  animation: centralPulse 5s ease-in-out infinite, centralDash 8s linear infinite, centralFloat 10s ease-in-out infinite;
+}
+.c0 { animation-delay: 0s, 0s, 0s; }
+.c1 { animation-delay: 1.5s, 1s, 2s; }
+.c2 { animation-delay: 3s, 2s, 4s; }
+
+/* Contour paths */
+.contour {
+  stroke: #ff5555;
+  stroke-width: 0.5;
+  stroke-dasharray: 400 150;
+  animation: contourDraw 6s ease-in-out infinite, contourFloat 7s ease-in-out infinite, contourFade 5s ease-in-out infinite;
+}
+.ct0 { animation-delay: 0s, 0.3s, 0.5s; }
+.ct1 { animation-delay: 0.8s, 1s, 0.2s; }
+.ct2 { animation-delay: 1.6s, 0.5s, 1s; }
+.ct3 { animation-delay: 2.4s, 1.5s, 0.3s; }
+.ct4 { animation-delay: 1s, 0s, 1.5s; }
+.ct5 { animation-delay: 3s, 1.2s, 0.8s; }
+
+/* Outer abstract paths */
+.outer {
+  stroke: #ff4040;
+  stroke-width: 0.4;
+  stroke-dasharray: 200 200;
+  animation: outerDraw 4s ease-in-out infinite, outerFloat 6s ease-in-out infinite, outerFade 3.5s ease-in-out infinite;
+}
+.o0  { animation-delay: 0s, 0.5s, 0s; }
+.o1  { animation-delay: 0.4s, 1s, 0.3s; }
+.o2  { animation-delay: 0.8s, 0s, 0.6s; }
+.o3  { animation-delay: 1.2s, 1.5s, 0.9s; }
+.o4  { animation-delay: 0.2s, 0.8s, 1.2s; }
+.o5  { animation-delay: 0.6s, 1.2s, 0.15s; }
+.o6  { animation-delay: 1s, 0.3s, 0.45s; }
+.o7  { animation-delay: 1.4s, 1.8s, 0.75s; }
+.o8  { animation-delay: 1.6s, 0.5s, 1.05s; }
+.o9  { animation-delay: 0.3s, 1s, 1.35s; }
+.o10 { animation-delay: 0.7s, 1.5s, 0.2s; }
+
+/* Glow effect */
+.glow {
+  filter: drop-shadow(0 0 4px rgba(229, 72, 72, 0.4)) drop-shadow(0 0 12px rgba(229, 72, 72, 0.15));
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+/* Central pulse */
+@keyframes centralPulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Central dash */
+@keyframes centralDash {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 2400; }
+}
+
+/* Central float */
+@keyframes centralFloat {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(0.5px, -0.8px); }
+  40% { transform: translate(-0.3px, 0.6px); }
+  60% { transform: translate(0.7px, 0.4px); }
+  80% { transform: translate(-0.4px, -0.5px); }
+}
+
+/* Contour draw */
+@keyframes contourDraw {
+  0% { stroke-dashoffset: 0; }
+  50% { stroke-dashoffset: 550; }
+  100% { stroke-dashoffset: 1100; }
+}
+
+/* Contour float */
+@keyframes contourFloat {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(1.5px, -2px) rotate(0.3deg); }
+  40% { transform: translate(-1px, 1.5px) rotate(-0.2deg); }
+  60% { transform: translate(2px, 1px) rotate(0.4deg); }
+  80% { transform: translate(-1.2px, -1.8px) rotate(-0.3deg); }
+}
+
+/* Contour fade */
+@keyframes contourFade {
+  0%, 100% { opacity: 0.7; }
+  25% { opacity: 1; }
+  50% { opacity: 0.5; }
+  75% { opacity: 0.9; }
+}
+
+/* Outer draw */
+@keyframes outerDraw {
+  0% { stroke-dashoffset: 400; }
+  50% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -400; }
+}
+
+/* Outer float */
+@keyframes outerFloat {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  15% { transform: translate(2.5px, -3px) scale(1.005) rotate(0.5deg); }
+  30% { transform: translate(-1.5px, 2px) scale(0.995) rotate(-0.3deg); }
+  50% { transform: translate(3px, 1px) scale(1.008) rotate(0.7deg); }
+  70% { transform: translate(-2px, -2.5px) scale(0.997) rotate(-0.5deg); }
+  85% { transform: translate(1px, 1.5px) scale(1.003) rotate(0.2deg); }
+}
+
+/* Outer fade */
+@keyframes outerFade {
+  0%, 100% { opacity: 0.4; }
+  20% { opacity: 0.9; }
+  40% { opacity: 0.3; }
+  60% { opacity: 1; }
+  80% { opacity: 0.5; }
+}
+
+/* Glow pulse */
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(229, 72, 72, 0.4)) drop-shadow(0 0 12px rgba(229, 72, 72, 0.15)); }
+  50% { filter: drop-shadow(0 0 8px rgba(229, 72, 72, 0.6)) drop-shadow(0 0 20px rgba(229, 72, 72, 0.25)); }
+}
+
+/* Lower lines - enhanced movement and fade in/out */
+.o5, .o6, .o7, .o8, .o9, .o10 {
+  animation: outerDraw 4s ease-in-out infinite, lowerFloat 5s ease-in-out infinite, lowerFade 3s ease-in-out infinite;
+}
+.o5  { animation-delay: 0s, 0.2s, 0s; }
+.o6  { animation-delay: 0.5s, 0.8s, 0.4s; }
+.o7  { animation-delay: 1s, 0.4s, 0.8s; }
+.o8  { animation-delay: 0.3s, 1.2s, 0.5s; }
+.o9  { animation-delay: 0.7s, 0.6s, 1s; }
+.o10 { animation-delay: 1.2s, 1s, 0.3s; }
+
+/* Lower lines - larger drifting motion */
+@keyframes lowerFloat {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(5px, -4px) rotate(0.8deg); }
+  40% { transform: translate(-3px, 6px) rotate(-0.5deg); }
+  60% { transform: translate(6px, 2px) rotate(1deg); }
+  80% { transform: translate(-4px, -5px) rotate(-0.7deg); }
+}
+
+/* Lower lines - full fade in and out */
+@keyframes lowerFade {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  70% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .central,
+  .contour,
+  .outer,
+  .glow {
+    animation: none;
+  }
+}
